@@ -1,11 +1,3 @@
-# Ignore CSS, JS, etc from package
-CallCentre/Content/bootstrap*
-
-CallCentre/Scripts/bootstrap*
-CallCentre/Scripts/jquery*
-CallCentre/Scripts/respond*
-CallCentre/Scripts/modernizr*
-
 # Local database
 CallCentre/App_Data/*.mdf
 CallCentre/App_Data/*.ldf
