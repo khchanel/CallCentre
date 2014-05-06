@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CallCentre.Models;
+using System.IO;
 
 namespace CallCentre.Controllers
 {
@@ -17,7 +18,15 @@ namespace CallCentre.Controllers
         // GET: /Contact/
         public ActionResult Index()
         {
-            return View(db.Contacts.ToList());
+            object contacts = db.Contacts.ToList();
+
+            if (!String.IsNullOrEmpty(Request.QueryString["pdf"]))
+            {
+                return new MvcRazorToPdf.PdfActionResult("ContactListPdf", contacts);
+                //return Content(RenderPartialViewToString("ContactListPdf", contacts));
+            }
+
+            return View(contacts);
         }
 
         // GET: /Contact/Details/5
@@ -113,6 +122,23 @@ namespace CallCentre.Controllers
             db.Contacts.Remove(contact);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        protected string RenderPartialViewToString(string viewName, object model)
+        {
+            if (string.IsNullOrEmpty(viewName))
+                viewName = ControllerContext.RouteData.GetRequiredString("action");
+
+            ViewData.Model = model;
+
+            using (StringWriter sw = new StringWriter())
+            {
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+
+                return sw.GetStringBuilder().ToString();
+            }
         }
 
         protected override void Dispose(bool disposing)

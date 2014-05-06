@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CallCentre.Models.Contact>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact List Pdf</title>
+
+    <style>
+        table {
+            width: 600px;
+        }
+
+        table tr th {
+            padding: 2px;
+        }
+
+        table tr td {
+            margin: 0px;
+            padding: 2px;
+        }
+
+        h1 {
+            color: #98bf21;
+        }
+    </style>
+</head>
+<body>
+    <img src="http://images.sixrevisions.com/2009/02/08-44_vector_people_icon.jpg" />
+    <h1>My Contact List</h1>
+
+    <table id="contacts-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @{int counter = 0;}
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @(++counter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</body>
+</html>
