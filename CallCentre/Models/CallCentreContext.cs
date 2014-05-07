@@ -19,6 +19,11 @@ namespace CallCentre.Models
         {
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<CallCentreContext, CallCentre.Migrations.Configuration>());
+        }
+
         public System.Data.Entity.DbSet<CallCentre.Models.Contact> Contacts { get; set; }
         public System.Data.Entity.DbSet<CallCentre.Models.CallLog> CallLogs { get; set; }
     }
