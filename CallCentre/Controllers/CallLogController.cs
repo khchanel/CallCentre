@@ -40,7 +40,11 @@ namespace CallCentre.Controllers
         public ActionResult Create()
         {
             ViewBag.ContactId = new SelectList(db.Contacts, "Id", "Name");
-            return View();
+
+            CallLog callLog = new CallLog();
+            callLog.CallDate = DateTime.Now;
+
+            return View(callLog);
         }
 
         // POST: /CallLog/Create
