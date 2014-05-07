@@ -11,6 +11,7 @@ namespace CallCentre.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Contact")]
         public int ContactId { get; set; }
         public virtual Contact Contact { get; set; }
 
@@ -18,6 +19,7 @@ namespace CallCentre.Models
         [MinLength(10)]
         public string Message { get; set; }
 
+        [Display(Name = "Date")]
         [DataType(DataType.DateTime)]
         public DateTime CallDate { get; set; }
     }
