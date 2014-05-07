@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Contact.Name)
+            @Html.ActionLink(Model.Contact.Name, "Details", "Contact", new  { id = Model.ContactId }, null)
         </dd>
 
         <dt>
