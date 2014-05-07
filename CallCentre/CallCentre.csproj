@@ -178,8 +178,13 @@
     <Compile Include="Migrations\201405061219011_CreateContactModel.Designer.cs">
       <DependentUpon>201405061219011_CreateContactModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405071510032_CreateCallLogModel.cs" />
+    <Compile Include="Migrations\201405071510032_CreateCallLogModel.Designer.cs">
+      <DependentUpon>201405071510032_CreateCallLogModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CallCentreContext.cs" />
+    <Compile Include="Models\CallLog.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -207,6 +212,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201405061219011_CreateContactModel.resx">
       <DependentUpon>201405061219011_CreateContactModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405071510032_CreateCallLogModel.resx">
+      <DependentUpon>201405071510032_CreateCallLogModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
