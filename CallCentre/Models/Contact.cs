@@ -21,6 +21,6 @@ namespace CallCentre.Models
         public string Email { get; set; }
 
         [Display(Name = "Calls")]
-        public virtual ICollection<CallLog> CallLogs { get; set; }
+        public ICollection<CallLog> CallLogs { get; set; }
     }
 }
